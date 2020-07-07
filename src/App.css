@@ -24,6 +24,11 @@
   color: white;
 }
 
+.pokemon-names {
+  text-transform: capitalize;
+}
+
+
 .App-link {
   color: #61dafb;
 }

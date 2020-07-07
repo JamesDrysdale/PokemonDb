@@ -6,7 +6,7 @@ const PokemonDetail = ({pokemon}) => {
 
     return (
         <div>
-            <h1>{pokemon.name}</h1>
+            <h1 className="pokemon-names">{pokemon.name}</h1>
 
         </div>
     )

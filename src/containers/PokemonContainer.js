@@ -31,7 +31,7 @@ class PokemonContainer extends React.Component {
         const selectedPokemon = this.state.pokemons.find(pokemon => {
             return pokemon.url === this.state.selectedPokemonUrl
         });
-        
+
         return (
             <div>
                 <h2>Pokemon from Red/Blue</h2>
