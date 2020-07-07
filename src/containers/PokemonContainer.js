@@ -7,7 +7,8 @@ class PokemonContainer extends React.Component {
         super(props);
         this.state = {
             pokemons: [],
-            selectedPokemonUrl: ''
+            selectedPokemonUrl: '',
+            pokemonDetails: ''
         };
 
         this.handlePokemonSelected = this.handlePokemonSelected.bind(this);
@@ -22,7 +23,11 @@ class PokemonContainer extends React.Component {
     }
 
     handlePokemonSelected(pokemonUrl){
-        this.setState({selectedPokemonUrl: pokemonUrl});
+      this.setState({selectedPokemonUrl: pokemonUrl});
+
+        fetch(pokemonUrl)
+            .then(res => res.json())
+            .then(data => this.setState({pokemonDetails: data}))
     }
     
     
@@ -32,15 +37,17 @@ class PokemonContainer extends React.Component {
             return pokemon.url === this.state.selectedPokemonUrl
         });
 
+        const selectedPokemonDetails = this.state.pokemonDetails;
+
         return (
             <div>
-                <h2>Pokemon from Red/Blue</h2>
+                <h1>Pokemon from Red/Blue</h1>
                     <PokemonSelect 
                         pokemons={this.state.pokemons}
                         onPokemonSelected={this.handlePokemonSelected}
                     />
                     <PokemonDetail
-                        pokemon={selectedPokemon}
+                        pokemonDetails={selectedPokemonDetails}
                     />
 
             </div>
